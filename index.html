@@ -127,7 +127,320 @@
   
 <style>
 :root{--maroon:#8a1740;--deep:#5e102e;--gold:#b9852d;--cream:#fff8ea;--ink:#2d2020;--muted:#766762;--line:#ead8bd;--white:#fffaf1}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fbf3e4;color:var(--ink);font-family:Inter,Arial,sans-serif}.header{position:sticky;top:0;z-index:20;height:76px;padding:0 5%;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-bottom:1px solid var(--line)}.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--maroon)}.brand img{width:42px;height:42px}.brand b{font-family:Georgia,serif;font-size:25px;display:block}.brand small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#795f56}.nav{display:flex;gap:25px;align-items:center}.nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:13px}.nav .btn{background:var(--maroon);color:#fff;padding:11px 20px;border-radius:999px}.wrap{max-width:1240px;margin:26px auto;padding:0 18px}.booking{display:grid;grid-template-columns:1.06fr .94fr;min-height:640px}.card{background:var(--cream);padding:38px 40px;border:1px solid var(--line);border-radius:22px 0 0 22px;box-shadow:0 15px 45px #5e102e12}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:800;margin:0 0 9px}.card h1{font-family:Georgia,serif;color:var(--maroon);font-size:43px;line-height:1.06;margin:0 0 8px}.card h1 em{color:var(--gold)}.lead{color:var(--muted);margin:0 0 20px}.label{font:700 14px Georgia,serif;color:var(--maroon);display:flex;align-items:center;gap:9px;margin:14px 0 10px}.label:before,.label:after{content:"";height:1px;background:#dfc28e;flex:1}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:12px;font-weight:700}input,select,textarea{font:inherit;color:#4c3b35;width:100%;margin-top:5px;padding:11px 12px;border:1px solid #dfc9a9;border-radius:8px;background:#fffdfa}textarea{resize:vertical}.primary{display:block;width:55%;margin:17px auto 8px;padding:13px;border:0;border-radius:999px;background:var(--maroon);color:#fff;font-weight:800;font-size:15px;cursor:pointer}.primary:disabled{opacity:.65;cursor:wait}.privacy{text-align:center;font-size:10px;color:#806f67}.success{padding:13px;background:#f0e8c8;border:1px solid #d6b96f;border-radius:9px;color:#573d21}.success strong,.success span{display:block}.hero{position:relative;overflow:hidden;border-radius:0 22px 22px 0;background:var(--deep)}.hero img{width:100%;height:100%;object-fit:cover;display:block}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#4b0c2555,#4b0c2530 55%,#25030a8a)}.heroText{position:absolute;z-index:2;right:6%;top:24%;width:42%;text-align:center;color:#fff}.heroText h2{font:600 44px/1.05 Georgia,serif;margin:12px 0}.heroText em{color:#f1ce7c}.heroText p{font-size:14px;line-height:1.5}.benefits,.packages{max-width:1200px;margin:0 auto;padding:24px 18px;display:grid;gap:13px}.benefits{grid-template-columns:repeat(4,1fr)}.benefits article{background:#fffaf0;border:1px solid var(--line);border-radius:15px;padding:18px;text-align:center}.bubble{width:42px;height:42px;border-radius:50%;background:var(--maroon);color:#f2d27f;display:grid;place-items:center;margin:auto;font-size:19px}.benefits h3{font-size:14px;margin:8px 0 4px}.benefits p{font-size:12px;color:var(--muted);margin:0}.section{max-width:1200px;margin:auto;padding:54px 18px}.center{text-align:center}.center h2{font:700 37px Georgia,serif;color:var(--maroon);margin:0 0 7px}.center p{color:var(--muted)}.packages{grid-template-columns:repeat(4,1fr);padding:15px 0}.pkg{background:#fffaf0;border:1px solid var(--line);border-radius:17px;padding:25px 16px;text-align:center;min-height:245px;display:flex;flex-direction:column;justify-content:flex-start}.pkg.featured{border:2px solid var(--gold);transform:translateY(-5px)}.pkg .ico{font-size:29px;color:var(--gold)}.pkg h3{font:700 17px Georgia,serif;margin:8px 0 5px}.pkg small{color:var(--muted);min-height:32px}.pkg strong{display:block;color:var(--maroon);font-size:24px;margin:7px 0 15px}.pkg strong small{display:inline;font-size:11px;color:var(--muted);font-weight:700;min-height:0}.pkg button{margin-top:auto;border:0;background:var(--maroon);color:#fff;border-radius:999px;padding:10px;width:100%;font-weight:800;cursor:pointer}.gallery{overflow:hidden}.gallery-row{overflow:hidden;margin:0 0 18px}.gallery-track{display:flex;gap:14px;transition:transform .9s cubic-bezier(.22,.61,.36,1);will-change:transform}.gallery-item{flex:0 0 calc((100% - 28px)/3);height:360px;border-radius:14px;overflow:hidden;border:3px solid #f7e7c8;background:#fff}.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}.gallery-dots{text-align:center;margin:4px 0 18px}.gallery-dots button{width:7px;height:7px;padding:0;margin:0 4px;border:0;border-radius:50%;background:#d8c4a6;cursor:pointer}.gallery-dots button.active{background:var(--maroon)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{padding:15px}.step b{font:700 28px Georgia,serif;color:var(--gold)}.step h3{font-size:15px}.step p{font-size:12px;color:var(--muted)}.cta{max-width:1160px;margin:15px auto 60px;padding:36px 45px;background:var(--maroon);border-radius:20px;color:#fff;display:flex;justify-content:space-between;align-items:center}.cta h2{font:700 30px Georgia,serif;margin:0}.cta a{background:#f0cf78;color:#4c1d20;text-decoration:none;padding:12px 21px;border-radius:999px;font-weight:800}footer{background:var(--deep);color:#f7dfad;padding:30px 6%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer strong{display:block;color:#fff}footer span{display:block;margin-top:4px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fbf3e4;color:var(--ink);font-family:Inter,Arial,sans-serif}.header{position:sticky;top:0;z-index:20;height:76px;padding:0 5%;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-bottom:1px solid var(--line)}.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--maroon)}.brand img{width:42px;height:42px}.brand b{font-family:Georgia,serif;font-size:25px;display:block}.brand small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#795f56}.nav{display:flex;gap:25px;align-items:center}.nav a{color:var(--ink);text-decoration:none;font-weight:700;font-size:13px}.nav .btn{background:var(--maroon);color:#fff;padding:11px 20px;border-radius:999px}.wrap{max-width:1240px;margin:26px auto;padding:0 18px}.booking{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:16px;align-items:start;min-height:640px}.card{background:var(--cream);padding:38px 40px;border:1px solid var(--line);border-radius:22px;box-shadow:0 15px 45px #5e102e12;min-width:0}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:800;margin:0 0 9px}.card h1{font-family:Georgia,serif;color:var(--maroon);font-size:43px;line-height:1.06;margin:0 0 8px}.card h1 em{color:var(--gold)}.lead{color:var(--muted);margin:0 0 20px}.label{font:700 14px Georgia,serif;color:var(--maroon);display:flex;align-items:center;gap:9px;margin:14px 0 10px}.label:before,.label:after{content:"";height:1px;background:#dfc28e;flex:1}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{font-size:12px;font-weight:700}input,select,textarea{font:inherit;color:#4c3b35;width:100%;margin-top:5px;padding:11px 12px;border:1px solid #dfc9a9;border-radius:8px;background:#fffdfa}textarea{resize:vertical}.primary{display:block;width:55%;margin:17px auto 8px;padding:13px;border:0;border-radius:999px;background:var(--maroon);color:#fff;font-weight:800;font-size:15px;cursor:pointer}.primary:disabled{opacity:.65;cursor:wait}.privacy{text-align:center;font-size:10px;color:#806f67}.success{padding:13px;background:#f0e8c8;border:1px solid #d6b96f;border-radius:9px;color:#573d21}.success strong,.success span{display:block}.hero{position:relative;overflow:hidden;border-radius:0 22px 22px 0;background:var(--deep)}.hero img{width:100%;height:100%;object-fit:cover;display:block}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#4b0c2555,#4b0c2530 55%,#25030a8a)}.heroText{position:absolute;z-index:2;right:6%;top:24%;width:42%;text-align:center;color:#fff}.heroText h2{font:600 44px/1.05 Georgia,serif;margin:12px 0}.heroText em{color:#f1ce7c}.heroText p{font-size:13px;line-height:1.5}.benefits,.packages{max-width:1200px;margin:0 auto;padding:24px 18px;display:grid;gap:13px}.benefits{grid-template-columns:repeat(4,1fr)}.benefits article{background:#fffaf0;border:1px solid var(--line);border-radius:15px;padding:18px;text-align:center}.bubble{width:42px;height:42px;border-radius:50%;background:var(--maroon);color:#f2d27f;display:grid;place-items:center;margin:auto;font-size:19px}.benefits h3{font-size:14px;margin:8px 0 4px}.benefits p{font-size:12px;color:var(--muted);margin:0}.section{max-width:1200px;margin:auto;padding:54px 18px}.center{text-align:center}.center h2{font:700 37px Georgia,serif;color:var(--maroon);margin:0 0 7px}.center p{color:var(--muted)}.packages{grid-template-columns:repeat(4,1fr);padding:15px 0}.pkg{background:#fffaf0;border:1px solid var(--line);border-radius:17px;padding:25px 16px;text-align:center;min-height:245px;display:flex;flex-direction:column;justify-content:flex-start}.pkg.featured{border:2px solid var(--gold);transform:translateY(-5px)}.pkg .ico{font-size:29px;color:var(--gold)}.pkg h3{font:700 17px Georgia,serif;margin:8px 0 5px}.pkg small{color:var(--muted);min-height:32px}.pkg strong{display:block;color:var(--maroon);font-size:24px;margin:7px 0 15px}.pkg strong small{display:inline;font-size:11px;color:var(--muted);font-weight:700;min-height:0}.pkg button{margin-top:auto;border:0;background:var(--maroon);color:#fff;border-radius:999px;padding:10px;width:100%;font-weight:800;cursor:pointer}.gallery{overflow:hidden}.gallery-row{overflow:hidden;margin:0 0 18px}.gallery-track{display:flex;gap:14px;transition:transform .9s cubic-bezier(.22,.61,.36,1);will-change:transform}.gallery-item{flex:0 0 calc((100% - 28px)/3);height:360px;border-radius:14px;overflow:hidden;border:3px solid #f7e7c8;background:#fff}.gallery-item img{width:100%;height:100%;object-fit:cover;display:block}.gallery-dots{text-align:center;margin:4px 0 18px}.gallery-dots button{width:7px;height:7px;padding:0;margin:0 4px;border:0;border-radius:50%;background:#d8c4a6;cursor:pointer}.gallery-dots button.active{background:var(--maroon)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{padding:15px}.step b{font:700 28px Georgia,serif;color:var(--gold)}.step h3{font-size:15px}.step p{font-size:12px;color:var(--muted)}.cta{max-width:1160px;margin:15px auto 60px;padding:36px 45px;background:var(--maroon);border-radius:20px;color:#fff;display:flex;justify-content:space-between;align-items:center}.cta h2{font:700 30px Georgia,serif;margin:0}.cta a{background:#f0cf78;color:#4c1d20;text-decoration:none;padding:12px 21px;border-radius:999px;font-weight:800}footer{background:var(--deep);color:#f7dfad;padding:30px 6%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}footer strong{display:block;color:#fff}footer span{display:block;margin-top:4px}
+.requirements-title{
+  font:700 15px Georgia,serif;
+  color:var(--maroon);
+  margin:18px 0 4px;
+}
+
+.requirements-note{
+  font-size:11px;
+  color:var(--muted);
+  margin:0 0 10px;
+}
+
+.requirements-table-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+
+.requirements-table{
+  min-width:720px;
+}
+
+.requirements-head,
+.requirement-row{
+  display:grid;
+  grid-template-columns:1.05fr .9fr 1.25fr 1.05fr 1.25fr 34px;
+  gap:8px;
+  align-items:center;
+}
+
+.requirements-head{
+  padding:0 2px 6px;
+  color:#6d554d;
+  font-size:10px;
+  font-weight:800;
+}
+
+.requirement-row{
+  padding:8px 0;
+  border-top:1px solid #ead8bd;
+}
+
+.requirement-row select{
+  margin-top:0;
+  padding:9px 9px;
+  font-size:11px;
+}
+
+.requirement-row input[type=file]{
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  pointer-events:none;
+}
+
+.upload-cell{
+  display:block;
+}
+
+.upload-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:37px;
+  padding:8px 10px;
+  border:1px dashed #d3b77f;
+  border-radius:8px;
+  background:#fffdfa;
+  color:var(--maroon);
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.upload-btn:hover{
+  background:#fff7e7;
+}
+
+.remove-requirement{
+  width:30px;
+  height:30px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:#a3163f;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.remove-requirement:hover{
+  background:#f8e4e7;
+}
+
+.add-requirement{
+  margin:10px 0 4px;
+  border:0;
+  border-radius:999px;
+  background:#f5e7cf;
+  color:var(--maroon);
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.add-requirement:hover{
+  background:#efddbd;
+}
+
+.additional-info{
+  display:block;
+  margin-top:12px;
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+@media(max-width:900px){
+  .requirements-table{
+    min-width:680px;
+  }
+}
+
+@media(max-width:540px){
+  .requirements-table-wrap{
+    overflow:visible;
+  }
+
+  .requirements-table{
+    min-width:0;
+  }
+
+  .requirements-head{
+    display:none;
+  }
+
+  .requirement-row{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    padding:12px 0;
+  }
+
+  .requirement-row label:nth-child(1){
+    grid-column:1/2;
+  }
+
+  .requirement-row label:nth-child(2){
+    grid-column:2/3;
+  }
+
+  .requirement-row label:nth-child(3){
+    grid-column:1/2;
+  }
+
+  .requirement-row label:nth-child(4){
+    grid-column:2/3;
+  }
+
+  .upload-cell{
+    grid-column:1/2;
+  }
+
+  .remove-requirement{
+    grid-column:2/3;
+    justify-self:end;
+  }
+}
+/* Mehndi Requirements Table */
+
+.requirements-title{
+  font:700 15px Georgia,serif;
+  color:var(--maroon);
+  margin:18px 0 4px;
+}
+
+.requirements-note{
+  font-size:11px;
+  color:var(--muted);
+  margin:0 0 10px;
+}
+
+.requirements-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  padding-bottom:4px;
+}
+
+.requirements-table{
+  width:100%;
+  min-width:760px;
+}
+
+.requirements-head,
+.requirement-row{
+  display:grid;
+  grid-template-columns:1.05fr .9fr 1.35fr 1.05fr 1.25fr 32px;
+  gap:7px;
+  align-items:center;
+}
+
+.requirements-head{
+  padding:0 3px 6px;
+  color:#6d554d;
+  font-size:10px;
+  font-weight:800;
+}
+
+.requirement-row{
+  padding:7px 3px;
+  border-top:1px solid #ead8bd;
+}
+
+.requirement-row label{
+  min-width:0;
+}
+
+.requirement-row select{
+  width:100%;
+  margin-top:0;
+  padding:8px 8px;
+  font-size:11px;
+}
+
+.requirement-row input[type=file]{
+  position:absolute;
+  width:1px;
+  height:1px;
+  opacity:0;
+  overflow:hidden;
+}
+
+.upload-cell{
+  display:block;
+}
+
+.upload-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:35px;
+  padding:7px 9px;
+  border:1px dashed #d3b77f;
+  border-radius:8px;
+  background:#fffdfa;
+  color:var(--maroon);
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+  white-space:nowrap;
+}
+
+.upload-btn:hover{
+  background:#fff7e7;
+}
+
+.remove-requirement{
+  width:28px;
+  height:28px;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  color:#a3163f;
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.remove-requirement:hover{
+  background:#f8e4e7;
+}
+
+.add-requirement{
+  margin:10px 0 4px;
+  border:0;
+  border-radius:999px;
+  background:#f5e7cf;
+  color:var(--maroon);
+  padding:9px 15px;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.add-requirement:hover{
+  background:#efddbd;
+}
+
+.additional-info{
+  display:block;
+  margin-top:12px;
+}
+
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
 @media(max-width:900px){.nav a:not(.btn){display:none}.booking{grid-template-columns:1fr}.card{border-radius:20px 20px 0 0}.hero{height:420px;border-radius:0 0 20px 20px}.heroText{width:48%}.benefits{grid-template-columns:1fr 1fr}.packages{grid-template-columns:1fr 1fr;padding:15px 18px}.gallery-item{flex-basis:calc((100% - 14px)/2)}.steps{grid-template-columns:1fr 1fr}.cta{margin:15px 18px 50px;flex-direction:column;gap:20px;text-align:center}}@media(max-width:540px){.header{padding:0 15px}.brand b{font-size:21px}.brand small{display:none}.brand img{width:37px;height:37px}.card{padding:28px 18px}.card h1{font-size:34px}.grid{grid-template-columns:1fr}.primary{width:100%}.heroText{width:57%;top:18%}.heroText h2{font-size:34px}.benefits,.packages{grid-template-columns:1fr}.pkg.featured{transform:none}.gallery-item{flex-basis:100%;height:420px}.steps{grid-template-columns:1fr}.cta h2{font-size:25px}}
 
   /* FAQ Section */
@@ -219,7 +532,7 @@
 <h1>Book Your <em>Mehndi Artist</em> in Bengaluru</h1>
 
 <p class="lead">We help you choose trusted, verified and trained mehndi artists and perfectly arrange your mehndi session in Bengaluru.</p>
-<form id="bookingForm" action="https://formsubmit.co/ajax/bridalmehndi7@gmail.com" method="POST">
+<form id="bookingForm" action="https://formsubmit.co/ajax/mehndikar11@gmail.com" method="POST" enctype="multipart/form-data">
 
 <input type="hidden" name="_subject" value="New MehndiKar Booking — Bengaluru">
 <input type="hidden" name="_template" value="table">
@@ -253,26 +566,21 @@
 
 </div>
 
-<div class="label">BOOKING DETAILS</div>
+<div class="label">EVENT DETAILS</div>
 
 <div class="grid">
 
-<label>Package / Product *
-<select name="package" id="package" required>
-<option value="">Choose an option</option>
-<option>Simple Mehndi Designs — ₹1,499 — 2 hours</option>
-<option>Simple Non-bridal Mehndi Designs — ₹1,799 — 2 hours</option>
-<option>Simple Mehndi Designs With Drawings — ₹2,199 — 2 hours</option>
-<option>Designer Mehndi — ₹2,499 — 2 hours</option>
-<option>Bridal Designer Mehndi — ₹2,599 — 2 hours</option>
-<option>Premium Designer Bridal Mehndi — Get Quote</option>
-<option>Portrait Mehndi Designs — Get Quote</option>
-<option>Fresh Mehndi Cones — 5 cones — ₹150</option>
-<option>Fresh Nail Cones — 2 cones — ₹50</option>
-<option>Aftercare Balm — ₹30 per piece</option>
-<option>Aftercare Kit — ₹90</option>
-<option>Mehndi Sealing Tape — ₹150 per piece</option>
-<option>Gloves — ₹25 per piece</option>
+<label>Event Type *
+<select name="eventType" required>
+<option value="">Choose event type</option>
+<option>Wedding</option>
+<option>Engagement</option>
+<option>Bridal Function</option>
+<option>Baby Shower</option>
+<option>Birthday</option>
+<option>Festival</option>
+<option>Corporate Event</option>
+<option>Other Special Occasion</option>
 </select>
 </label>
 
@@ -290,26 +598,144 @@
 </select>
 </label>
 
-<label>Number of People *
-<input type="number" name="people" min="1" required placeholder="e.g. 2">
+<label>Location / Area *
+<input name="location" required placeholder="e.g. Whitefield">
+</label>
+
+<label>Total Number of People *
+<input type="number" name="totalPeople" min="1" required placeholder="e.g. 15">
 </label>
 
 </div>
 
+<div class="label">MEHNDI REQUIREMENTS *</div>
+
+<p class="requirements-title">Tell us what each group needs</p>
+
+<p class="requirements-note">
+Add the number of people and design preferences for each group.
+</p>
+
+<div class="requirements-table-wrap">
+
+<div class="requirements-table">
+
+<div class="requirements-head">
+<span>For whom?</span>
+<span>Number of people</span>
+<span>Design type</span>
+<span>Coverage</span>
+<span>Reference Image</span>
+<span></span>
+</div>
+
+<div id="requirementsList">
+
+<div class="requirement-row">
+
 <label>
-Additional Information
-<textarea name="info" rows="3" placeholder="Tell us about your event, venue area, preferred design, etc."></textarea>
+<span class="sr-only">For whom?</span>
+<select name="forWhom[]" class="for-whom" required>
+<option value="">Choose</option>
+<option>Bride</option>
+<option>Bridesmaid</option>
+<option>Non-bridal</option>
+<option>Guests</option>
+<option>Kids</option>
+<option>Mom to be</option>
+<option>Dad to be</option>
+<option>Groom</option>
+</select>
+</label>
+
+<label>
+<span class="sr-only">Number of people</span>
+<select name="peopleCount[]" required>
+<option value="">Choose</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+<option>9</option>
+<option>10</option>
+<option>11</option>
+<option>12</option>
+<option>13</option>
+<option>14</option>
+<option>15</option>
+<option>16</option>
+<option>17</option>
+<option>18</option>
+<option>19</option>
+<option>20</option>
+<option>20+</option>
+</select>
+</label>
+
+<label>
+<span class="sr-only">Design type</span>
+<select name="designType[]" required>
+<option value="">Choose</option>
+<option>Simple Mehndi Designs</option>
+<option>Simple Non-bridal Mehndi Designs</option>
+<option>Mehndi Designs With Drawings</option>
+<option>Designer / Intricate Mehndi</option>
+<option>Bridal Designer Mehndi</option>
+<option>Premium Designer Bridal Mehndi</option>
+<option>Portrait Mehndi</option>
+</select>
+</label>
+
+<label>
+<span class="sr-only">Coverage</span>
+<select name="coverage[]" required>
+<option value="">Choose</option>
+<option>Hands + Feet</option>
+<option>Hands Only</option>
+<option>Feet Only</option>
+</select>
+</label>
+
+<label class="upload-cell">
+<span class="sr-only">Reference image</span>
+<input type="file" name="referenceImages[]" accept="image/*" multiple>
+<span class="upload-btn">Upload</span>
+</label>
+
+<button type="button" class="remove-requirement" aria-label="Remove requirement">×</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<button type="button" class="add-requirement" id="addRequirement">
+＋ Add another requirement
+</button>
+
+<input type="hidden" name="package" id="package" value="">
+
+<label class="additional-info">Additional Information
+<textarea name="message" rows="3" placeholder="Tell us about your event, venue area, preferred design, etc."></textarea>
 </label>
 
 <button class="primary" type="submit">BOOK NOW →</button>
 
-<p class="privacy">Your details are used only to contact you about this booking.</p>
+<p class="privacy">
+Your details are used only to contact you about this booking request.
+</p>
 
 <div id="success" class="success" hidden>
 <strong>Booking request received.</strong>
 <span>We’ll contact you shortly.</span>
 </div>
-
 </form>
 </div>
 
@@ -709,7 +1135,7 @@ Additional Information
 
 var form=document.getElementById('bookingForm');
 var success=document.getElementById('success');
-var endpoint='https://formsubmit.co/ajax/bridalmehndi7@gmail.com';
+var endpoint='https://formsubmit.co/ajax/mehndikar11@gmail.com';
 var dateField=document.querySelector('input[name="date"]');
 
 if(dateField) dateField.min=new Date().toISOString().split('T')[0];
@@ -726,6 +1152,194 @@ block:'start'
 });
 });
 });
+
+var requirementsList=document.getElementById('requirementsList');
+var addRequirement=document.getElementById('addRequirement');
+
+function updatePeopleOptions(row){
+
+var who=row.querySelector('.for-whom');
+var countField=row.querySelector('select[name="peopleCount[]"]');
+
+if(!who || !countField)return;
+
+var currentValue=countField.value;
+
+var normalOptions=[
+'',
+'1',
+'2',
+'3',
+'4',
+'5',
+'6',
+'7',
+'8',
+'9',
+'10',
+'11',
+'12',
+'13',
+'14',
+'15',
+'16',
+'17',
+'18',
+'19',
+'20',
+'20+'
+];
+
+var groupOptions=[
+'',
+'1',
+'2–3',
+'4–5',
+'5–6',
+'7–9',
+'10–12',
+'13–15',
+'16–20',
+'20+'
+];
+
+var options=(who.value==='Bridesmaid'||who.value==='Guests')
+?groupOptions
+:normalOptions;
+
+countField.innerHTML='';
+
+options.forEach(function(value){
+
+var option=document.createElement('option');
+
+option.value=value;
+option.textContent=value||'Choose';
+
+countField.appendChild(option);
+
+});
+
+if(options.indexOf(currentValue)!==-1){
+countField.value=currentValue;
+}
+
+}
+
+function setupRequirementRow(row){
+
+var who=row.querySelector('.for-whom');
+var uploadInput=row.querySelector('input[type="file"]');
+var uploadButton=row.querySelector('.upload-btn');
+var removeButton=row.querySelector('.remove-requirement');
+
+if(who){
+
+who.addEventListener('change',function(){
+updatePeopleOptions(row);
+});
+
+}
+
+if(uploadButton && uploadInput){
+
+uploadButton.addEventListener('click',function(){
+uploadInput.click();
+});
+
+uploadInput.addEventListener('change',function(){
+
+if(uploadInput.files.length===0){
+
+uploadButton.textContent='Upload';
+
+return;
+
+}
+
+if(uploadInput.files.length===1){
+
+uploadButton.textContent='✓ 1 Image';
+
+}else{
+
+uploadButton.textContent='✓ '+uploadInput.files.length+' Images';
+
+}
+
+});
+
+}
+
+if(removeButton){
+
+removeButton.addEventListener('click',function(){
+
+var rows=requirementsList.querySelectorAll('.requirement-row');
+
+if(rows.length>1){
+
+row.remove();
+
+}
+
+});
+
+}
+
+updatePeopleOptions(row);
+
+}
+
+if(requirementsList){
+
+var firstRow=requirementsList.querySelector('.requirement-row');
+
+if(firstRow){
+
+setupRequirementRow(firstRow);
+
+}
+
+}
+
+if(addRequirement){
+
+addRequirement.addEventListener('click',function(){
+
+var firstRow=requirementsList.querySelector('.requirement-row');
+
+if(!firstRow)return;
+
+var newRow=firstRow.cloneNode(true);
+
+newRow.querySelectorAll('select').forEach(function(select){
+
+select.value='';
+
+});
+
+newRow.querySelectorAll('input[type="file"]').forEach(function(input){
+
+input.value='';
+
+});
+
+var uploadButton=newRow.querySelector('.upload-btn');
+
+if(uploadButton){
+
+uploadButton.textContent='Upload';
+
+}
+
+requirementsList.appendChild(newRow);
+
+setupRequirementRow(newRow);
+
+});
+
+}
 
 if(form){
 
