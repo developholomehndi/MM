@@ -39,7 +39,9 @@ export default async function handler(req, res) {
 
     return res.status(response.status).json(result);
 
-  } catch (error) {
+    } catch (error) {
+    console.error('BOOKING ERROR:', error);
+
     return res.status(500).json({
       success: false,
       error: 'Booking submission failed'
