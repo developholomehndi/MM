@@ -532,7 +532,7 @@
 <h1>Book Your <em>Mehndi Artist</em> in Bengaluru</h1>
 
 <p class="lead">We help you choose trusted, verified and trained mehndi artists and perfectly arrange your mehndi session in Bengaluru.</p>
-<form id="bookingForm" action="/api/booking" method="POST" enctype="multipart/form-data">
+<form id="bookingForm" action="https://formsubmit.co/mehndikar11@gmail.com" method="POST" enctype="multipart/form-data">
 
 <input type="hidden" name="_subject" value="New MehndiKar Booking — Bengaluru">
 <input type="hidden" name="_template" value="table">
@@ -1135,7 +1135,8 @@ Your details are used only to contact you about this booking request.
 
 var form=document.getElementById('bookingForm');
 var success=document.getElementById('success');
-var endpoint='https://formsubmit.co/ajax/'+'mehndikar'+'11'+'@'+'gmail'+'.com';var dateField=document.querySelector('input[name="date"]');
+var endpoint='https://formsubmit.co/ajax/mehndikar11@gmail.com';
+var dateField=document.querySelector('input[name="date"]');
 
 if(dateField) dateField.min=new Date().toISOString().split('T')[0];
 
@@ -1342,92 +1343,205 @@ setupRequirementRow(newRow);
 
 if(form){
 
-form.addEventListener('submit',function(event){
+  form.addEventListener('submit',function(event){
 
-event.preventDefault();
+    event.preventDefault();
 
-var submitButton=form.querySelector('button[type="submit"]');
-var originalText=submitButton?submitButton.textContent:'BOOK NOW →';
+    var submitButton=form.querySelector('button[type="submit"]');
+    var originalText=submitButton ? submitButton.textContent : 'BOOK NOW →';
 
-if(submitButton){
-submitButton.disabled=true;
-submitButton.textContent='Sending…';
+    if(submitButton){
+      submitButton.disabled=true;
+      submitButton.textContent='Sending…';
+    }
+
+    var data=new FormData(form);
+
+    /* -----------------------------------------
+       1. SEND BOOKING DETAILS TO FORMSUBMIT
+       ----------------------------------------- */
+
+    var emailRequest=fetch(endpoint,{
+      method:'POST',
+      headers:{
+        'Accept':'application/json'
+      },
+      body:data
+    });
+
+    /* -----------------------------------------
+       2. COLLECT ALL FORM FIELDS FOR GOOGLE DRIVE
+       ----------------------------------------- */
+
+    var formFields={};
+
+    data.forEach(function(value,key){
+
+      if(value instanceof File){
+        return;
+      }
+
+      if(formFields[key] !== undefined){
+
+        if(!Array.isArray(formFields[key])){
+          formFields[key]=[formFields[key]];
+        }
+
+        formFields[key].push(value);
+
+      }else{
+
+        formFields[key]=value;
+
+      }
+
+    });
+
+    /* -----------------------------------------
+       3. COLLECT ALL REFERENCE IMAGES
+       ----------------------------------------- */
+
+    var fileInputs=form.querySelectorAll('input[type="file"]');
+    var filePromises=[];
+
+    fileInputs.forEach(function(input){
+
+      Array.from(input.files || []).forEach(function(file){
+
+        filePromises.push(
+          new Promise(function(resolve,reject){
+
+            var reader=new FileReader();
+
+            reader.onload=function(){
+
+              var base64=reader.result.split(',')[1];
+
+              resolve({
+                name:file.name,
+                type:file.type,
+                data:base64
+              });
+
+            };
+
+            reader.onerror=function(){
+              reject(new Error('Could not read image: ' + file.name));
+            };
+
+            reader.readAsDataURL(file);
+
+          })
+        );
+
+      });
+
+    });
+
+    /* -----------------------------------------
+       4. SEND FORM DATA + IMAGES TO GOOGLE DRIVE
+       ----------------------------------------- */
+
+    var driveRequest=Promise.all(filePromises)
+      .then(function(files){
+
+        return fetch(
+          'https://script.google.com/macros/s/AKfycbyYPrknWbfD0i8zjUwCTx_CyukNXK-mayeHh7V_2zo4hQxkLrey4U4HQzsvNrSMRt1P/exec',
+          {
+            method:'POST',
+            headers:{
+              'Content-Type':'text/plain;charset=utf-8'
+            },
+            body:JSON.stringify({
+              formFields:formFields,
+              files:files
+            })
+          }
+        );
+
+      })
+      .then(function(response){
+
+        if(!response.ok){
+          throw new Error('Drive upload failed');
+        }
+
+        return response.text();
+
+      });
+
+    /* -----------------------------------------
+       5. WAIT FOR BOTH EMAIL + DRIVE UPLOAD
+       ----------------------------------------- */
+
+    Promise.all([
+      emailRequest,
+      driveRequest
+    ])
+
+    .then(function(){
+
+      if(success){
+
+        success.hidden=false;
+        success.classList.add('show');
+
+        success.innerHTML=
+          '<strong>Booking request received.</strong>' +
+          '<span>We’ll contact you shortly.</span>';
+
+        success.scrollIntoView({
+          behavior:'smooth',
+          block:'center'
+        });
+
+      }
+
+      form.reset();
+
+      var cityField=form.querySelector('[name="city"]');
+
+      if(cityField){
+        cityField.value='Bengaluru';
+      }
+
+    })
+
+    .catch(function(error){
+
+      console.error(error);
+
+      if(success){
+
+        success.hidden=false;
+        success.classList.add('show');
+
+        success.innerHTML=
+          '<strong>We couldn’t send the request.</strong>' +
+          '<span>Please try again or call 9353686183.</span>';
+
+        success.scrollIntoView({
+          behavior:'smooth',
+          block:'center'
+        });
+
+      }
+
+    })
+
+    .finally(function(){
+
+      if(submitButton){
+        submitButton.disabled=false;
+        submitButton.textContent=originalText;
+      }
+
+    });
+
+  });
+
 }
 
-var data=new FormData(form);
-
-fetch(endpoint,{
-method:'POST',
-headers:{
-'Accept':'application/json'
-},
-body:data
-})
-
-.then(function(response){
-
-if(!response.ok){
-throw new Error('Submission failed');
-}
-
-return response.json();
-
-})
-
-.then(function(){
-
-if(success){
-
-success.hidden=false;
-success.classList.add('show');
-
-success.scrollIntoView({
-behavior:'smooth',
-block:'center'
-});
-
-}
-
-form.reset();
-
-var cityField=form.querySelector('[name="city"]');
-
-if(cityField){
-cityField.value='Bengaluru';
-}
-
-})
-
-.catch(function(){
-
-if(success){
-
-success.hidden=false;
-success.classList.add('show');
-
-success.innerHTML='<strong>We couldn’t send the request.</strong><span>Please try again or call 9353686183.</span>';
-
-success.scrollIntoView({
-behavior:'smooth',
-block:'center'
-});
-
-}
-
-})
-
-.finally(function(){
-
-if(submitButton){
-
-submitButton.disabled=false;
-submitButton.textContent=originalText;
-
-}
-
-});
-
-});
 function setupGallery(rowId,count){
 
 var track=document.getElementById(rowId);
