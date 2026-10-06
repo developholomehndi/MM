@@ -35,8 +35,19 @@ export default async function handler(req, res) {
       }
     );
 
-    const result = await response.json();
+const responseText = await response.text();
 
+console.log('FORMSUBMIT STATUS:', response.status);
+console.log('FORMSUBMIT RESPONSE:', responseText);
+
+let result;
+
+try {
+  result = JSON.parse(responseText);
+} catch (error) {
+  throw new Error('FormSubmit returned non-JSON response: ' + responseText.slice(0, 300));
+}
+    
     return res.status(response.status).json(result);
 
     } catch (error) {
