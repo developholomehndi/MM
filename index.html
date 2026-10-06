@@ -1135,8 +1135,7 @@ Your details are used only to contact you about this booking request.
 
 var form=document.getElementById('bookingForm');
 var success=document.getElementById('success');
-var endpoint='/api/booking';
-var dateField=document.querySelector('input[name="date"]');
+var endpoint='https://formsubmit.co/ajax/'+'mehndikar'+'11'+'@'+'gmail'+'.com';var dateField=document.querySelector('input[name="date"]');
 
 if(dateField) dateField.min=new Date().toISOString().split('T')[0];
 
@@ -1355,111 +1354,25 @@ submitButton.disabled=true;
 submitButton.textContent='Sending…';
 }
 
-var formData=new FormData(form);
-var formFields={};
-var files=[];
+var data=new FormData(form);
 
-formData.forEach(function(value,key){
-
-if(value instanceof File){
-
-if(value.size>0){
-files.push(value);
-}
-
-}else{
-
-if(formFields[key]!==undefined){
-
-if(!Array.isArray(formFields[key])){
-formFields[key]=[formFields[key]];
-}
-
-formFields[key].push(value);
-
-}else{
-
-formFields[key]=value;
-
-}
-
-}
-
-});
-
-function readFile(file){
-
-return new Promise(function(resolve,reject){
-
-var reader=new FileReader();
-
-reader.onload=function(){
-
-var base64=reader.result.split(',')[1];
-
-resolve({
-name:file.name,
-type:file.type,
-data:base64
-});
-
-};
-
-reader.onerror=reject;
-
-reader.readAsDataURL(file);
-
-});
-
-}
-
-var emailRequest=fetch('/api/booking',{
+fetch(endpoint,{
 method:'POST',
 headers:{
-'Content-Type':'application/json',
 'Accept':'application/json'
 },
-body:JSON.stringify(formFields)
+body:data
 })
+
 .then(function(response){
 
 if(!response.ok){
-throw new Error('Booking submission failed');
+throw new Error('Submission failed');
 }
 
 return response.json();
 
-});
-
-var driveRequest=Promise.all(
-files.map(readFile)
-)
-.then(function(encodedFiles){
-
-return fetch('/api/upload',{
-method:'POST',
-headers:{
-'Content-Type':'application/json',
-'Accept':'application/json'
-},
-body:JSON.stringify({
-formFields:formFields,
-files:encodedFiles
 })
-});
-
-})
-.then(function(response){
-
-if(!response.ok){
-throw new Error('Image upload failed');
-}
-
-return response.text();
-
-});
-
-Promise.all([emailRequest,driveRequest])
 
 .then(function(){
 
@@ -1515,7 +1428,6 @@ submitButton.textContent=originalText;
 });
 
 });
-
 function setupGallery(rowId,count){
 
 var track=document.getElementById(rowId);
