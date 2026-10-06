@@ -1343,204 +1343,178 @@ setupRequirementRow(newRow);
 
 if(form){
 
-  form.addEventListener('submit',function(event){
+form.addEventListener('submit',function(event){
 
-    event.preventDefault();
+event.preventDefault();
 
-    var submitButton=form.querySelector('button[type="submit"]');
-    var originalText=submitButton ? submitButton.textContent : 'BOOK NOW →';
+var submitButton=form.querySelector('button[type="submit"]');
+var originalText=submitButton?submitButton.textContent:'BOOK NOW →';
 
-    if(submitButton){
-      submitButton.disabled=true;
-      submitButton.textContent='Sending…';
-    }
+if(submitButton){
+submitButton.disabled=true;
+submitButton.textContent='Sending…';
+}
 
-    var data=new FormData(form);
+var formData=new FormData(form);
+var formFields={};
+var files=[];
 
-    /* -----------------------------------------
-       1. SEND BOOKING DETAILS TO FORMSUBMIT
-       ----------------------------------------- */
+formData.forEach(function(value,key){
 
-    var emailRequest=fetch(endpoint,{
-      method:'POST',
-      headers:{
-        'Accept':'application/json'
-      },
-      body:data
-    });
+if(value instanceof File){
 
-    /* -----------------------------------------
-       2. COLLECT ALL FORM FIELDS FOR GOOGLE DRIVE
-       ----------------------------------------- */
+if(value.size>0){
+files.push(value);
+}
 
-    var formFields={};
+}else{
 
-    data.forEach(function(value,key){
+if(formFields[key]!==undefined){
 
-      if(value instanceof File){
-        return;
-      }
+if(!Array.isArray(formFields[key])){
+formFields[key]=[formFields[key]];
+}
 
-      if(formFields[key] !== undefined){
+formFields[key].push(value);
 
-        if(!Array.isArray(formFields[key])){
-          formFields[key]=[formFields[key]];
-        }
+}else{
 
-        formFields[key].push(value);
-
-      }else{
-
-        formFields[key]=value;
-
-      }
-
-    });
-
-    /* -----------------------------------------
-       3. COLLECT ALL REFERENCE IMAGES
-       ----------------------------------------- */
-
-    var fileInputs=form.querySelectorAll('input[type="file"]');
-    var filePromises=[];
-
-    fileInputs.forEach(function(input){
-
-      Array.from(input.files || []).forEach(function(file){
-
-        filePromises.push(
-          new Promise(function(resolve,reject){
-
-            var reader=new FileReader();
-
-            reader.onload=function(){
-
-              var base64=reader.result.split(',')[1];
-
-              resolve({
-                name:file.name,
-                type:file.type,
-                data:base64
-              });
-
-            };
-
-            reader.onerror=function(){
-              reject(new Error('Could not read image: ' + file.name));
-            };
-
-            reader.readAsDataURL(file);
-
-          })
-        );
-
-      });
-
-    });
-
-    /* -----------------------------------------
-       4. SEND FORM DATA + IMAGES TO GOOGLE DRIVE
-       ----------------------------------------- */
-
-    var driveRequest=Promise.all(filePromises)
-      .then(function(files){
-
-        return fetch(
-          'https://script.google.com/macros/s/AKfycbyYPrknWbfD0i8zjUwCTx_CyukNXK-mayeHh7V_2zo4hQxkLrey4U4HQzsvNrSMRt1P/exec',
-          {
-            method:'POST',
-            headers:{
-              'Content-Type':'text/plain;charset=utf-8'
-            },
-            body:JSON.stringify({
-              formFields:formFields,
-              files:files
-            })
-          }
-        );
-
-      })
-      .then(function(response){
-
-        if(!response.ok){
-          throw new Error('Drive upload failed');
-        }
-
-        return response.text();
-
-      });
-
-    /* -----------------------------------------
-       5. WAIT FOR BOTH EMAIL + DRIVE UPLOAD
-       ----------------------------------------- */
-
-    Promise.all([
-      emailRequest,
-      driveRequest
-    ])
-
-    .then(function(){
-
-      if(success){
-
-        success.hidden=false;
-        success.classList.add('show');
-
-        success.innerHTML=
-          '<strong>Booking request received.</strong>' +
-          '<span>We’ll contact you shortly.</span>';
-
-        success.scrollIntoView({
-          behavior:'smooth',
-          block:'center'
-        });
-
-      }
-
-      form.reset();
-
-      var cityField=form.querySelector('[name="city"]');
-
-      if(cityField){
-        cityField.value='Bengaluru';
-      }
-
-    })
-
-    .catch(function(error){
-
-      console.error(error);
-
-      if(success){
-
-        success.hidden=false;
-        success.classList.add('show');
-
-        success.innerHTML=
-          '<strong>We couldn’t send the request.</strong>' +
-          '<span>Please try again or call 9353686183.</span>';
-
-        success.scrollIntoView({
-          behavior:'smooth',
-          block:'center'
-        });
-
-      }
-
-    })
-
-    .finally(function(){
-
-      if(submitButton){
-        submitButton.disabled=false;
-        submitButton.textContent=originalText;
-      }
-
-    });
-
-  });
+formFields[key]=value;
 
 }
+
+}
+
+});
+
+function readFile(file){
+
+return new Promise(function(resolve,reject){
+
+var reader=new FileReader();
+
+reader.onload=function(){
+
+var base64=reader.result.split(',')[1];
+
+resolve({
+name:file.name,
+type:file.type,
+data:base64
+});
+
+};
+
+reader.onerror=reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+var emailRequest=fetch('/api/booking',{
+method:'POST',
+headers:{
+'Content-Type':'application/json',
+'Accept':'application/json'
+},
+body:JSON.stringify(formFields)
+})
+.then(function(response){
+
+if(!response.ok){
+throw new Error('Booking submission failed');
+}
+
+return response.json();
+
+});
+
+var driveRequest=Promise.all(
+files.map(readFile)
+)
+.then(function(encodedFiles){
+
+return fetch('/api/upload',{
+method:'POST',
+headers:{
+'Content-Type':'application/json',
+'Accept':'application/json'
+},
+body:JSON.stringify({
+formFields:formFields,
+files:encodedFiles
+})
+});
+
+})
+.then(function(response){
+
+if(!response.ok){
+throw new Error('Image upload failed');
+}
+
+return response.text();
+
+});
+
+Promise.all([emailRequest,driveRequest])
+
+.then(function(){
+
+if(success){
+
+success.hidden=false;
+success.classList.add('show');
+
+success.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+}
+
+form.reset();
+
+var cityField=form.querySelector('[name="city"]');
+
+if(cityField){
+cityField.value='Bengaluru';
+}
+
+})
+
+.catch(function(){
+
+if(success){
+
+success.hidden=false;
+success.classList.add('show');
+
+success.innerHTML='<strong>We couldn’t send the request.</strong><span>Please try again or call 9353686183.</span>';
+
+success.scrollIntoView({
+behavior:'smooth',
+block:'center'
+});
+
+}
+
+})
+
+.finally(function(){
+
+if(submitButton){
+
+submitButton.disabled=false;
+submitButton.textContent=originalText;
+
+}
+
+});
+
+});
 
 function setupGallery(rowId,count){
 
